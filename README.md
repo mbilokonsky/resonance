@@ -1,4 +1,6 @@
 # The Resonator Architecture
+>  What if you gave your LLM ADHD by teaching it to pay attention to things like rhyme, and it suddenly got 60% smarter?
+
 This repo contains a very simple proof of concept for a novel LLM training architecture we call The Resonator. It works like this:
 <img width="606" height="1231" alt="image" src="https://github.com/user-attachments/assets/3b196530-5e8c-4df2-b607-21492dd8af82" />
 
