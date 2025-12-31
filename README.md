@@ -1,5 +1,5 @@
-# The Resonator Architecture
->  What if you gave your LLM ADHD by teaching it to pay attention to things like rhyme, and it suddenly got 60% smarter?
+# The Resonance Transformer
+>  What if you gave your LLM ADHD by teaching it to pay attention to non-semantic resonance, and it suddenly got 60% smarter?
 
 This repo contains a very simple proof of concept for a novel LLM training architecture we call Resonance Transformers. The files here include:
 
