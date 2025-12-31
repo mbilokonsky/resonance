@@ -28,5 +28,8 @@ The biggest question we have right now is, are these results meaningful? Because
 ### Authors
 I'm not the primary author of this code - it was created in collaboration with a human associate who at this point would prefer to go by the name Tacokotor.
 
-### Related Links
-After sharing this, someone shared a paper from last month that uses similar ideas to improve RAG. We arrived at this concept independently, literally yesterday, but the existence of [this paper](https://arxiv.org/abs/2511.11848) feels ...resonant.
+### Resonant Works
+We literally stumbled onto this idea from first principles less than 24 hours before the time of this writing. Since starting to share it folks have shared a few things it has reminded them of, and I find this fascinating.
+
+* [Phase-Coded Memory and Morphological Resonance: A Next-Generation Retrieval-Augmented Generator Architecture](https://arxiv.org/abs/2511.11848) feels ...resonant. They're suggesting that RAG could be improved using similar techniques to compress external knowledge sources.
+* [Phase-Coded Memory and Morphological Resonance: A Next-Generation Retrieval-Augmented Generator Architecture](https://arxiv.org/abs/2509.10534) also seems to have converged on the idea of "multi-polar" coordinates, which might rhyme with this. They're solving a different problem, I think - they're trying to fix a known issue with positionality vs meaning. But there's a resonance here.
