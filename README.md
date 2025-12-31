@@ -18,3 +18,6 @@ The biggest question we have right now is, are these results meaningful? Because
 
 ### Authors
 I'm not the primary author of this code - it was created in collaboration with a human associate who at this point would prefer to go by the name Tacokotor.
+
+### Related Links
+After sharing this, someone shared a paper from last month that uses similar ideas to improve RAG. We arrived at this concept independently, literally yesterday, but the existence of [this paper](https://arxiv.org/abs/2511.11848) feels ...resonant.
