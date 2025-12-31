@@ -10,7 +10,8 @@ If you've stumbled onto this repo, and you understand LLM training strategies an
 By introduciung an orthogonal modality to semantics based on a sort of phase mechanism we are able to split the attention head between both interpretations of a given token. "Phase" for our purposes is generic and doens't need to be specified, but an example of a non-semantic modality would be using phonetic similarity for latent space positioning - two words that rhyme are closer together, two words that don't rhyme are farther apart. This sounds silly, but we have some fascinating theory behind why this might work the way it seems to. But as you can see from our findings, rhyme has a minimal impact specifically - but phase as a secondary modality has a *massive* impact.
 
 ## Diagram
-<img width="440" height="967" alt="image" src="https://github.com/user-attachments/assets/ddab63fe-dc1a-4c89-82d3-7975bd263d61" />
+<img width="513" height="1156" alt="image" src="https://github.com/user-attachments/assets/422398a9-0aba-4e61-aec1-f7bf20cf9a32" />
+
 
 
 ## What We Want
