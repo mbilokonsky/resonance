@@ -24,6 +24,8 @@ If this is doing what we think it's doing then we have strong intuition for how 
 ## Are These Results Meaningful?
 The biggest question we have right now is, are these results meaningful? Because if so, this feels significant. 
 
+### Reason For Concern
+However, the tests here are against a relatively small amount of data given the parameter size. We really need to be running this against a larger source of data. (Currently this is happening, but it's going to take a few days to finish). When we have better numbers we will update this readme with new information, but the one big weakness we are aware of is that the data we're using isn't sufficient for the model sizes to truly hit their stride.
 
 ### Authors
 I'm not the primary author of this code - it was created in collaboration with a human associate who at this point would prefer to go by the name Tacokotor.
