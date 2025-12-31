@@ -2,9 +2,11 @@
 >  What if you gave your LLM ADHD by teaching it to pay attention to things like rhyme, and it suddenly got 60% smarter?
 
 This repo contains a very simple proof of concept for a novel LLM training architecture we call The Resonator. It works like this:
+
 <img width="606" height="1231" alt="image" src="https://github.com/user-attachments/assets/3b196530-5e8c-4df2-b607-21492dd8af82" />
 
 Against a (relatively small, but not trivial) dataset, we saw the following results:
+
 <img width="726" height="220" alt="image" src="https://github.com/user-attachments/assets/c3fb7109-767c-40b0-b946-75c4a037e754" />
 
 We created The Resonator by following some general principles stumbled upon from an unrelated domain. We have enough understanding of training LLMs to have assembled this, but not enough to understand if what we have is meaningful in the sense that it seems like it might be. The Resonator framework attempts to introduce a unique kind of multimodality into the training structure. Take a look at the implementation, take a look at the results, and if you are so moved kindly leave a comment, issue or PR with your feedback.
