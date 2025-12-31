@@ -9,6 +9,76 @@ If you've stumbled onto this repo, and you understand LLM training strategies an
 ## What's the TLDR?
 By introduciung an orthogonal modality to semantics based on a sort of phase mechanism we are able to split the attention head between both interpretations of a given token. "Phase" for our purposes is generic and doens't need to be specified, but an example of a non-semantic modality would be using phonetic similarity for latent space positioning - two words that rhyme are closer together, two words that don't rhyme are farther apart. This sounds silly, but we have some fascinating theory behind why this might work the way it seems to. But as you can see from our findings, rhyme has a minimal impact specifically - but phase as a secondary modality has a *massive* impact.
 
+## Diagram
+The Full Picture
+
+┌─────────────────────────────────────────────────────────────────┐
+│                         INPUT                                    │
+│                    "light shines at night"                       │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    GPT-2 TOKENIZER                               │
+│                    [2971, 27741, 379, 1755]                      │
+│                    (standard, nothing special)                   │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                 DUAL EMBEDDING (key innovation)                 │
+│  ┌──────────────┐          ┌──────────────┐                     │
+│  │   Semantic   │          │    Phase     │                     │
+│  │   [768 dim]  │          │   [32 dim]   │                     │
+│  │   (meaning)  │          │   (sound)    │                     │
+│  └──────┬───────┘          └──────┬───────┘                     │
+│         │                         │                              │
+│         │    ┌─────────────┐      │                              │
+│         └───►│   BLEND     │◄─────┘                              │
+│              │  (learned)  │                                     │
+│              └──────┬──────┘                                     │
+│                     │                                            │
+│                     ▼                                            │
+│              Final Embedding                                     │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              │ also compute
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│              RESONANCE MATRIX (key innovation)                  │
+│                                                                  │
+│            light  shines  at   night                             │
+│    light  [ 1.0   0.12  0.08  0.95 ]                            │
+│    shines [ 0.12  1.0   0.15  0.11 ]                            │
+│    at     [ 0.08  0.15  1.0   0.09 ]                            │
+│    night  [ 0.95  0.11  0.09  1.0  ]                            │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│           RESONANCE ATTENTION (key innovation)                  │
+│                                                                  │
+│    Standard:  attention = softmax(QK^T / √d)                    │
+│    Yours:     attention = softmax(QK^T / √d + λR)               │
+│                                             ^^                   │
+│                                    resonance bias                │
+│                                                                  │
+│    Result: "night" attends more to "light" (they rhyme)         │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    STANDARD FFN + LAYERS                         │
+│                    (nothing special here)                        │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                         OUTPUT                                   │
+│                    Next token prediction                         │
+└─────────────────────────────────────────────────────────────────┘
+
 ## What We Want
 If this is doing what we think it's doing then we have strong intuition for how to further develop this. However, we're soon going to get to a point where we need compute resources outside of our current capabilities. So ideally, in a best-case reality, we've stumbled onto something signficant and someone is willing to throw some compute resources at us so that we can see if it scales in the ways we hope. In the worst case, this is noise masquerading as signal. We'd really like an opportunity to find out.
 
